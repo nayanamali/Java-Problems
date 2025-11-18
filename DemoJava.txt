@@ -1,0 +1,15 @@
+class DemoJava
+{
+     public void answer()
+     {
+          String str=null;
+
+          System.out.println("Length of string:" + str);
+     }
+
+     public static void main(String args[])
+     {
+           DemoJava d1=new DemoJava();
+           d1.answer();
+     }
+}

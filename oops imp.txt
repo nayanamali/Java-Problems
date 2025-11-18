@@ -1,0 +1,33 @@
+//child class access all properties ( Variables and methos) of parent class  as well as it's own properties(Variables and Methods)
+//Most Imp feacture of inheritance is Data reusability
+
+
+//Inheritance : Inheritance is used to establish relationship between two or more class where one class is a child child and other is parent class
+ //give example : Animal
+
+
+//polymorphism can be achieved through method
+
+//when we use same method for performing multiple task within same class it know as method overloading( polymorphism).
+
+
+//Polymorphism means many form of same anmethods 
+
+
+//using same method of parent class into child class known as method overriding.
+
+
+//Encapsulation: It provide protection to data members and method of class ( It cannot be access directly)
+
+//Encapsulation can be achieved through access modifier
+
+
+//it uses public getters and setters to acesss private data members
+
+//Showing important feacture and hiding unnessary details from user known as Abstraction.
+
+//Abstraction can be achived through Abstract class and Interface      (ex: in bank it shows only important withdrow functionality but hides code behind it)
+
+//Interface is used to achieve abstraction in terms of 100%
+
+//Abstract class can used to achieve abstraction in 0-100%

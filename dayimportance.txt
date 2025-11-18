@@ -1,0 +1,60 @@
+class dayimportance{
+  
+       public static void main(String args[])
+      {
+             System.out.println("Select Days to Display Importance");
+             System.out.println("1.Monday");
+             System.out.println("2.Monday");
+             System.out.println("3.Monday");
+             System.out.println("4.Monday");
+             System.out.println("5.Monday");
+             System.out.println("6.Monday");
+             System.out.println("7.Monday");
+     
+             int select_day=5;
+             switch(select_day)
+             {
+                    case 1: 
+                              System.out.println("Importance:");
+                              System.out.println("Represents calmness, emotions, and the mind.");
+                              System.out.println("Fasting on Mondays (Somavār Vrat) pleases Lord Shiva"); 
+                              System.out.println("popular among unmarried girls for getting a good spouse.");
+                              System.out.println("Special worship involves offering milk, bilva leaves, and water to Shiva Linga.");
+                              System.out.println("Considered good for starting journeys and spiritual practices.");
+                              break;
+                    case 2: 
+                              System.out.println("Importance:");
+                              System.out.println("Symbolizes strength, courage, and protection.");
+                              System.out.println("People fast on Tuesdays to reduce the malefic effects of Mars (Mangal Dosh).");
+                              System.out.println("Hanuman worship is popular on this day; red flowers and sindoor are offered.");
+                              System.out.println("Considered good for initiating legal or property-related work.");
+                              break;
+                    case 3: 
+                              System.out.println("Importance:");
+                              System.out.println("Symbolizes strength, courage, and protection.
+                              System.out.println("People fast on Tuesdays to reduce the malefic effects of Mars (Mangal Dosh).");
+                              System.out.println("Hanuman worship is popular on this day; red flowers and sindoor are offered.");
+                              break;
+                    case 4: 
+                              System.out.println("Importance:");
+                              System.out.println("Represents intelligence, communication, and business.");
+                              break;
+                    case 5: 
+                              System.out.println("Importance:");
+                              System.out.println("Associated with knowledge, wisdom, and prosperity.");
+                              break;
+                    case 6: 
+                              System.out.println("Importance:");
+                              System.out.println("Represents love, wealth, beauty, and material comforts.");
+                              break;
+                    case 7: 
+                              System.out.println("Importance:");
+                              System.out.println("Associated with vitality, health, authority, and leadership.");
+                              break;
+                    default:
+                              System.out.println("Invalid Day");
+                              break;
+                }
+           }
+}
+              

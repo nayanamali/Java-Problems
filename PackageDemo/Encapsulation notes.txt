@@ -1,0 +1,23 @@
+A pakage is a folder that contains all related classes and interfaces
+
+Encapsulation can be done through Access Level ( Access Modifier)
+
+When we use Public Access level than it provide accessibility to all members 
+
+when we use Protected Access Level than it provide accessibility to only specific member It means if there are 100 files and it we want to show only 50 files to only 10 specific people than make it Protected
+
+Private Access modifier means If there are  some files present into folder that onlu accessible to specific Single member not to all members than make it is private for that member It means if there are 100 files and it we want to show only 10 files to only 1 specific people than make it private
+
+A package is simply a folder where we keep related classes and interface
+
+Access Specifier means to restrict accessibility level to a Folder that which can access it and which cannot access it
+
+To define diffrent access Specifier to Folder or files present inside folder known as Encapsulation
+
+Encapsulation means providing diffrent access Specifier to Files present inside folder or folder.
+
+The definition, but there's one simple encapsulation, nothing but creating packages or folders inside your project and providing the access for each of the files.
+
+Encapsulation means creating packages and folder inside your project and providing different access specifire for each of the file on this access specified encapsulation.
+
+Private data members can be accessed through getters and setters method

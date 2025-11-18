@@ -1,0 +1,511 @@
+mysql> create table student(id int,name varchar(20),city varchar(2));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into student values(101,"Ram","Pune"),(102,"Shyam","Latur"),(103,"Nitin","Solapur");
+ERROR 1406 (22001): Data too long for column 'city' at row 1
+mysql> alter table student modify column city varchar(20);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into student values(101,"Ram","Pune"),(102,"Shyam","Latur"),(103,"Nitin","Solapur");
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select *from student;
++------+-------+---------+
+| id   | name  | city    |
++------+-------+---------+
+|  101 | Ram   | Pune    |
+|  102 | Shyam | Latur   |
+|  103 | Nitin | Solapur |
++------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql> create table emp(id int,name varchar(20),salary decimal(10,2));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into emp values(101,"Ram",25000.00),(102,"Shyam",35600.00),(103,"Falguni",40000.00),(104,"Lalita",50000.00),(105,"Ketan",43250.00);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from emp;
++------+---------+----------+
+| id   | name    | salary   |
++------+---------+----------+
+|  101 | Ram     | 25000.00 |
+|  102 | Shyam   | 35600.00 |
+|  103 | Falguni | 40000.00 |
+|  104 | Lalita  | 50000.00 |
+|  105 | Ketan   | 43250.00 |
++------+---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select name,salary from emp;
++---------+----------+
+| name    | salary   |
++---------+----------+
+| Ram     | 25000.00 |
+| Shyam   | 35600.00 |
+| Falguni | 40000.00 |
+| Lalita  | 50000.00 |
+| Ketan   | 43250.00 |
++---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from emp where salary>30000;
++------+---------+----------+
+| id   | name    | salary   |
++------+---------+----------+
+|  102 | Shyam   | 35600.00 |
+|  103 | Falguni | 40000.00 |
+|  104 | Lalita  | 50000.00 |
+|  105 | Ketan   | 43250.00 |
++------+---------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select *from employee order by salary desc;
+ERROR 1146 (42S02): Table 'sys.employee' doesn't exist
+mysql> select *from emp order by salary desc;
++------+---------+----------+
+| id   | name    | salary   |
++------+---------+----------+
+|  104 | Lalita  | 50000.00 |
+|  105 | Ketan   | 43250.00 |
+|  103 | Falguni | 40000.00 |
+|  102 | Shyam   | 35600.00 |
+|  101 | Ram     | 25000.00 |
++------+---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select coun(*) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from emp' at line 1
+mysql> select count(*) from emp;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select name,max(salary) from emp;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'sys.emp.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> select max(salary) from emp;
++-------------+
+| max(salary) |
++-------------+
+|    50000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary) as max_salary , min(salary) as min_salary ,avg(salary) as avg_salary from emp;
++------------+------------+--------------+
+| max_salary | min_salary | avg_salary   |
++------------+------------+--------------+
+|   50000.00 |   25000.00 | 38770.000000 |
++------------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select *from emp where salary between 25000 and 50000;
++------+---------+----------+
+| id   | name    | salary   |
++------+---------+----------+
+|  101 | Ram     | 25000.00 |
+|  102 | Shyam   | 35600.00 |
+|  103 | Falguni | 40000.00 |
+|  104 | Lalita  | 50000.00 |
+|  105 | Ketan   | 43250.00 |
++------+---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> create table emp1(id int,name varchar(20),salary decimal(10,2),dept varchar(20));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into emp values(101,"Ram",25000.00,"IT"),(102,"Shyam",35600.00,"HR"),(103,"Falguni",40000.00,"Project"),(104,"Lalita",50000.00,"IT"),(105,"Ketan",43250.00"HR");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"HR")' at line 1
+mysql> insert into emp values(101,"Ram",25000.00,"IT"),(102,"Shyam",35600.00,"HR"),(103,"Falguni",40000.00,"Project"),(104,"Lalita",50000.00,"IT"),(105,"Ketan",43250.00,"HR");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into emp1 values(101,"Ram",25000.00,"IT"),(102,"Shyam",35600.00,"HR"),(103,"Falguni",40000.00,"Project"),(104,"Lalita",50000.00,"IT"),(105,"Ketan",43250.00,"HR");
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> selet *from emp12;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selet *from emp12' at line 1
+mysql> selet *from emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selet *from emp1' at line 1
+mysql> select *from emp1;
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  101 | Ram     | 25000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  104 | Lalita  | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
++------+---------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select *from emp1 where dept in("IT","HR");
++------+--------+----------+------+
+| id   | name   | salary   | dept |
++------+--------+----------+------+
+|  101 | Ram    | 25000.00 | IT   |
+|  102 | Shyam  | 35600.00 | HR   |
+|  104 | Lalita | 50000.00 | IT   |
+|  105 | Ketan  | 43250.00 | HR   |
++------+--------+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp1 values(106,"Aayush",20000.00,"Project");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from emp1 where dept in("IT","HR");
++------+--------+----------+------+
+| id   | name   | salary   | dept |
++------+--------+----------+------+
+|  101 | Ram    | 25000.00 | IT   |
+|  102 | Shyam  | 35600.00 | HR   |
+|  104 | Lalita | 50000.00 | IT   |
+|  105 | Ketan  | 43250.00 | HR   |
++------+--------+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> select *from emp1;
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  101 | Ram     | 25000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  104 | Lalita  | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
+|  106 | Aayush  | 20000.00 | Project |
++------+---------+----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select *from emp where name like 'A%';
+Empty set (0.00 sec)
+
+mysql> select *from emp where name like 'a%';
+Empty set (0.00 sec)
+
+mysql> select *from emp where name like '_a%';
++------+---------+----------+
+| id   | name    | salary   |
++------+---------+----------+
+|  101 | Ram     | 25000.00 |
+|  103 | Falguni | 40000.00 |
+|  104 | Lalita  | 50000.00 |
++------+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select *from emp where name like 'A%';
+Empty set (0.00 sec)
+
+mysql> select count(*) from emp1 group by dept;
++----------+
+| count(*) |
++----------+
+|        2 |
+|        2 |
+|        2 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp1 values(107,"Ramesh",25000.00,"IT"),(108,"Shweta",35600.00,"IT"),(109,"Falak",40000.00,"IT"),(110,"Lalit",50000.00,"IT");
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select *from emp1;
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  101 | Ram     | 25000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  104 | Lalita  | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
+|  106 | Aayush  | 20000.00 | Project |
+|  107 | Ramesh  | 25000.00 | IT      |
+|  108 | Shweta  | 35600.00 | IT      |
+|  109 | Falak   | 40000.00 | IT      |
+|  110 | Lalit   | 50000.00 | IT      |
++------+---------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select *from emp where count(dept)==5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==5' at line 1
+mysql> select *from emp where count(dept) is equal to 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'equal to 5' at line 1
+mysql> select name,salary from emp order by salary desc limit 1,1;
++-------+----------+
+| name  | salary   |
++-------+----------+
+| Ketan | 43250.00 |
++-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary from emp order by salary desc limit 2,1;
++---------+----------+
+| name    | salary   |
++---------+----------+
+| Falguni | 40000.00 |
++---------+----------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary from emp order by salary desc limit 0,1;
++--------+----------+
+| name   | salary   |
++--------+----------+
+| Lalita | 50000.00 |
++--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary from emp1 order by salary desc limit 1,1;
++-------+----------+
+| name  | salary   |
++-------+----------+
+| Lalit | 50000.00 |
++-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary from emp1 order by salary desc;
++---------+----------+
+| name    | salary   |
++---------+----------+
+| Lalita  | 50000.00 |
+| Lalit   | 50000.00 |
+| Ketan   | 43250.00 |
+| Falguni | 40000.00 |
+| Falak   | 40000.00 |
+| Shyam   | 35600.00 |
+| Shweta  | 35600.00 |
+| Ram     | 25000.00 |
+| Ramesh  | 25000.00 |
+| Aayush  | 20000.00 |
++---------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select avg(salary) from emp1 group by dept;
++--------------+
+| avg(salary)  |
++--------------+
+| 37600.000000 |
+| 39425.000000 |
+| 30000.000000 |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> select avg(salary) as dept_highsalary from emp1 group by dept;
++-----------------+
+| dept_highsalary |
++-----------------+
+|    37600.000000 |
+|    39425.000000 |
+|    30000.000000 |
++-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select name as empname,dept as deptname,avg(salary) as dept_highsalary from emp1 group by dept;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'sys.emp1.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select dept as deptname,avg(salary) as dept_highsalary from emp1 group by dept;
++----------+-----------------+
+| deptname | dept_highsalary |
++----------+-----------------+
+| IT       |    37600.000000 |
+| HR       |    39425.000000 |
+| Project  |    30000.000000 |
++----------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select dept as deptname, max(avg(salary)) as max_avgsalary from emp1;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select dept as deptname,avg(salary) as dept_highsalary from emp1 group by dept limit 1,1;
++----------+-----------------+
+| deptname | dept_highsalary |
++----------+-----------------+
+| HR       |    39425.000000 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select dept as deptname,avg(salary) as dept_highsalary from emp1 group by dept limit 1,1;
++----------+-----------------+
+| deptname | dept_highsalary |
++----------+-----------------+
+| HR       |    39425.000000 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select *from emp1 where name in("A","E","I","O","U");
+Empty set (0.00 sec)
+
+mysql> select *from emp1 where name like 'A%' or name like 'E%';
++------+--------+----------+---------+
+| id   | name   | salary   | dept    |
++------+--------+----------+---------+
+|  106 | Aayush | 20000.00 | Project |
++------+--------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select *from emp1 where name like 'A%' or name like 'E%' name like 'I%' or name like 'O%'or name like 'U%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name like 'I%' or name like 'O%'or name like 'U%'' at line 1
+mysql> select *from emp1 where name like 'A%' or name like 'E%' or name like 'I%' or name like 'O%' or name like 'U%';
++------+--------+----------+---------+
+| id   | name   | salary   | dept    |
++------+--------+----------+---------+
+|  106 | Aayush | 20000.00 | Project |
++------+--------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select *from emp1 where name not like 'A%' or name not like 'E%' or name not like 'I%' or name not like 'O%' or name not like 'U%';
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  101 | Ram     | 25000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  104 | Lalita  | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
+|  106 | Aayush  | 20000.00 | Project |
+|  107 | Ramesh  | 25000.00 | IT      |
+|  108 | Shweta  | 35600.00 | IT      |
+|  109 | Falak   | 40000.00 | IT      |
+|  110 | Lalit   | 50000.00 | IT      |
++------+---------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select *from emp1 where name not like 'A%' or name not like 'E%' or name not like 'I%' or name not like 'O%' or name not like 'U%';
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  101 | Ram     | 25000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  104 | Lalita  | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
+|  106 | Aayush  | 20000.00 | Project |
+|  107 | Ramesh  | 25000.00 | IT      |
+|  108 | Shweta  | 35600.00 | IT      |
+|  109 | Falak   | 40000.00 | IT      |
+|  110 | Lalit   | 50000.00 | IT      |
++------+---------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select *from emp1 order by salary desc;
++------+---------+----------+---------+
+| id   | name    | salary   | dept    |
++------+---------+----------+---------+
+|  104 | Lalita  | 50000.00 | IT      |
+|  110 | Lalit   | 50000.00 | IT      |
+|  105 | Ketan   | 43250.00 | HR      |
+|  103 | Falguni | 40000.00 | Project |
+|  109 | Falak   | 40000.00 | IT      |
+|  102 | Shyam   | 35600.00 | HR      |
+|  108 | Shweta  | 35600.00 | IT      |
+|  101 | Ram     | 25000.00 | IT      |
+|  107 | Ramesh  | 25000.00 | IT      |
+|  106 | Aayush  | 20000.00 | Project |
++------+---------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select *from emp1 order by salary desc limit 2,1;
++------+-------+----------+------+
+| id   | name  | salary   | dept |
++------+-------+----------+------+
+|  105 | Ketan | 43250.00 | HR   |
++------+-------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary from emp1 order by salary limit 3;
++--------+----------+
+| name   | salary   |
++--------+----------+
+| Aayush | 20000.00 |
+| Ram    | 25000.00 |
+| Ramesh | 25000.00 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select name,salary from emp1 order by salary desc limit 3;
++--------+----------+
+| name   | salary   |
++--------+----------+
+| Lalit  | 50000.00 |
+| Lalita | 50000.00 |
+| Ketan  | 43250.00 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> create table empdemo1 (id int primary key auto_increment,name varchar(40) not null,dept varchar(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into empdemo1 values(101,"Ram","IT"),(102,"Shyam","HR"),(103,"Manisha","IT"),(104,"Diksha","Project"),(105,"Lalita","IT");
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from empdemo1;
++-----+---------+---------+
+| id  | name    | dept    |
++-----+---------+---------+
+| 101 | Ram     | IT      |
+| 102 | Shyam   | HR      |
+| 103 | Manisha | IT      |
+| 104 | Diksha  | Project |
+| 105 | Lalita  | IT      |
++-----+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> create table empdemo (id int primary key auto_increment,name varchar(40) not null,deptid int);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into empdemo1 values(101,"Ram",10),(102,"Shyam",20),(103,"Manisha",null),(104,"Diksha",40),(105,"Lalita",50);
+ERROR 1062 (23000): Duplicate entry '101' for key 'empdemo1.PRIMARY'
+mysql> insert into empdemo values(101,"Ram",10),(102,"Shyam",20),(103,"Manisha",null),(104,"Diksha",40),(105,"Lalita",50);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from empdemo;
++-----+---------+--------+
+| id  | name    | deptid |
++-----+---------+--------+
+| 101 | Ram     |     10 |
+| 102 | Shyam   |     20 |
+| 103 | Manisha |   NULL |
+| 104 | Diksha  |     40 |
+| 105 | Lalita  |     50 |
++-----+---------+--------+
+5 rows in set (0.00 sec)
+
+mysql> create table dept(dept_id int,deptname varchar(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into empdemo values(10,"IT"),(20,"HR"),(30,"Finance"),(40,"Project"),(50,"Product");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into dept values(10,"IT"),(20,"HR"),(30,"Finance"),(40,"Project"),(50,"Product");
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from dept;
++---------+----------+
+| dept_id | deptname |
++---------+----------+
+|      10 | IT       |
+|      20 | HR       |
+|      30 | Finance  |
+|      40 | Project  |
+|      50 | Product  |
++---------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select e1.name,e1.deptid,d1.dept_id from empdemo as e1 left join dept as d1 on e1.deptid=d1.dept_id;
++---------+--------+---------+
+| name    | deptid | dept_id |
++---------+--------+---------+
+| Ram     |     10 |      10 |
+| Shyam   |     20 |      20 |
+| Manisha |   NULL |    NULL |
+| Diksha  |     40 |      40 |
+| Lalita  |     50 |      50 |
++---------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql>
