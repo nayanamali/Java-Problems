@@ -1,0 +1,27 @@
+//writing at once and using it in multiple ways known as reusability
+
+//two types of relationship :- 1)IS-a (Inheritance) 2) Has-a(Aggreagation)
+
+
+//Person Has-a Address 
+//Person Is-a Employee
+
+
+//to identify whether there is inheritance ( Then it can done it through [ extends ] Keyword) 
+
+
+//aggragation ( here object of class is passed as a variable that access class data)
+
+
+//what is has-a relationship & is-a relationship
+
+
+//types of inheritance-1)single inheritance 2)Multilevel Inheritance 3)Hierachical Ineritance
+
+
+//in java ,A class can access properties of anly single class not multiple classes
+
+//in java ,multiple inheritance is not supported.
+//in java, Hybrid Inheritance is combination of heirachical Inheritance and multiple Inheriatnce( not supported in java)
+
+//what is inheritance in java & what are types of inheritance in java ( then describe five types of inheritance)
