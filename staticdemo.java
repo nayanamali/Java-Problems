@@ -1,27 +1,32 @@
-//static variable in java (share same copy of variable among all instance of class)
-class staticdemo
+class StaticDemo
 {
-        int id;
-        String name;
-        static String city="Pune";
- 
-        staticdemo(int id,String name)
-        {
-               this.id=id;
-               this.name=name;
-        }
-        
-        void show() 
-        {
-                 System.out.println("ID:" +id +" Name:" +name+ " City:" + city);
-        }
+     static int a=10;
+     static int b=20;
 
-        public static void main(String args[]) 
-        {
-                 staticdemo d1=new staticdemo(101,"Ram");
-                 d1.show();
-              
-                 staticdemo d2=new staticdemo(102,"Shyam");
-                 d2.show();
-        }
+     static void display()
+     {
+         System.out.println("Outer Static Metthod");
+     }
+
+     static class StaticInner
+     {
+            void show()
+            {
+                    display();
+                    System.out.println("value of a : " + a);
+                    System.out.println("value of b : " + b);
+            }
+     }
+
+     public static void main(String args[])
+     {
+           StaticDemo d1=new StaticDemo();
+           
+            StaticDemo.StaticInner i1= new  StaticDemo.StaticInner();
+
+           i1.show();
+     }
 }
+
+           
+   

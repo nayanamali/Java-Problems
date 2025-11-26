@@ -1,15 +1,27 @@
-class factorial{
-     
-        public static void main(String args[])
-        {
-             int num=5;
-             System.out.println("Given Number:" +num);
-             int fact=1;
-             for(int i=1;i<=num;i++)
-             {
-                fact=fact*i;
-             }
-             
-             System.out.println("factorial Of Given number:" + fact);
-        }
+class Factorial
+{
+      int num;
+      int fact=1;
+      Factorial(int num)
+      {
+          this.num=num;
+      }
+
+      void display()
+      {
+                for(int i=1;i<num;i++)
+                {
+                        fact+=fact*i;
+                }
+
+                System.out.println("factorial of Given number : " + fact);
+      }
+
+      public static void main(String args[])
+      {
+               Factorial f1 = new Factorial(5);
+               f1.display();
+      }
 }
+   
+         

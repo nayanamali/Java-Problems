@@ -1,32 +1,25 @@
 class calculator
 {
-   
-       int a;
-       int b;
+      void add(int a,int b)
+      {
+              System.out.println("Addition of two Integer Number : " + (a + b ));
+      }
 
-       calculator(int a,int b)
-       {
-           this.a=a;
-           this.b=b;
-       }
-       void input()
-       {
-            System.out.println("Enter Value of a:" + a);
-            System.out.println("Enter Value of b:" + b);
-            this.displayResult();
-       }
-    
-       void displayResult() 
-       {
-             int result=a+b;
-             System.out.println("Addition of a & b: " + result);
-       }
+      void add(double a,double b)
+      {
+              System.out.println("Addition of two Double Number : " + (a + b ));
+      }
+
+      void add(int a,int b ,int c)
+      {
+              System.out.println("Addition of Three Integer Number : " + (a + b + c));
+      }
 
       public static void main(String args[])
       {
-             
-            calculator c1=new calculator(10,20);
-           
-            c1.input();
+              calculator c1 = new calculator();
+              c1.add(10,20);
+              c1.add(25.10,20.10);
+              c1.add(10,20,30);
       }
-}  
+}
